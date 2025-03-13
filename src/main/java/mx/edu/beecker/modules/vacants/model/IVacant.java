@@ -19,6 +19,16 @@ public interface IVacant extends JpaRepository<BeanVacant, Long> {
             Pageable pageable
     );
 
+    @Query("SELECT v FROM BeanVacant v WHERE v.status = :status " +
+            "AND (:search IS NULL OR LOWER(v.location) LIKE LOWER(CONCAT('%', :search, '%')) " +
+            "OR LOWER(v.positionName) LIKE LOWER(CONCAT('%', :search, '%')) " +
+            "OR LOWER(v.area) LIKE LOWER(CONCAT('%', :search, '%')))")
+    Page<BeanVacant> findByStatusAndFiltersForAdmin(
+            @Param("status") Boolean status,
+            @Param("search") String search,
+            Pageable pageable
+    );
+
 
 
 
