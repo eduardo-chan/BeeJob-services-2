@@ -133,6 +133,20 @@ public class VacantService {
         return vacantsPage.map(ResponseVacantDTO::new);
     }
 
+    @Transactional(readOnly = true)
+    public Page<ResponseVacantDTO> getAllVacantsForAdmin(RequestPaginationVacantAdminDTO filter) {
+
+        Pageable pageable = PageRequest.of(filter.getPage(), filter.getSize(), Sort.by(filter.getSortDirection(), "publicationDate"));
+
+
+        Page<BeanVacant> vacantsPage = vacantRepository.findByStatusAndFiltersForAdmin(
+                filter.getStatus(),
+                filter.getSearch(),
+                pageable
+        );
+        return vacantsPage.map(ResponseVacantDTO::new);
+    }
+
 
 
 

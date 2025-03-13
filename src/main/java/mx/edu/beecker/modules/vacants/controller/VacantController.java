@@ -62,7 +62,12 @@ public class VacantController {
         return ResponseEntity.ok(response);
     }
 
-    //get all para admin, añadiendo filtro de filtrar por estado
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/get-all-all")
+    public ResponseEntity<Page<ResponseVacantDTO>> getAllVacants(@Valid @RequestBody RequestPaginationVacantAdminDTO filter) {
+        Page<ResponseVacantDTO> response = vacantService.getAllVacantsForAdmin(filter);
+        return ResponseEntity.ok(response);
+    }
 
 
 
