@@ -19,7 +19,8 @@ public interface IVacant extends JpaRepository<BeanVacant, Long> {
             Pageable pageable
     );
 
-    @Query("SELECT v FROM BeanVacant v WHERE v.status = :status " +
+    @Query("SELECT v FROM BeanVacant v " +
+            "WHERE (:status IS NULL OR v.status = :status) " +
             "AND (:search IS NULL OR LOWER(v.location) LIKE LOWER(CONCAT('%', :search, '%')) " +
             "OR LOWER(v.positionName) LIKE LOWER(CONCAT('%', :search, '%')) " +
             "OR LOWER(v.area) LIKE LOWER(CONCAT('%', :search, '%')))")
