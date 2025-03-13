@@ -22,7 +22,7 @@ public class RequestPaginationVacantAdminDTO {
     private String search;
     private String sortBy;
 
-    @NotNull(message = "Status is required")
+
     private Boolean status;
 
     public Sort.Direction getSortDirection() {

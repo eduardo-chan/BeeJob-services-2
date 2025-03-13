@@ -140,7 +140,7 @@ public class VacantService {
 
 
         Page<BeanVacant> vacantsPage = vacantRepository.findByStatusAndFiltersForAdmin(
-                filter.getStatus(),
+                filter.getStatus() != null ? filter.getStatus() : null,
                 filter.getSearch(),
                 pageable
         );
