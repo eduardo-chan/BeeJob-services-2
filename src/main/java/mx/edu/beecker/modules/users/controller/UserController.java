@@ -89,5 +89,9 @@ public class UserController {
         userService.updateUserStatus(request);
         return ResponseEntity.ok("Postulant status updated successfully");
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/get-one-postulant")
+    public ResponseEntity<ResponseGetPostulantsDTO> getPostulantById(@Valid @RequestBody RequestGetPostulantDTO request) {
+        return ResponseEntity.ok(userService.getPostulantById(request));
+    }
 }

@@ -5,6 +5,7 @@ import mx.edu.beecker.modules.personal_information.BeanPersonalInformation;
 import mx.edu.beecker.modules.personal_information.IPersonalInformation;
 import mx.edu.beecker.modules.users.controller.dto.admin.PaginationRequestDTO;
 import mx.edu.beecker.modules.users.controller.dto.admin.UpdateUserStatusDTO;
+import mx.edu.beecker.modules.users.controller.dto.postulant.RequestGetPostulantDTO;
 import mx.edu.beecker.modules.users.controller.dto.postulant.RequestUserDTO;
 import mx.edu.beecker.modules.users.controller.dto.admin.ResponseGetPostulantsDTO;
 import mx.edu.beecker.modules.users.controller.dto.postulant.ResponseGetUserDTO;
@@ -232,6 +233,17 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseGetPostulantsDTO getPostulantById(RequestGetPostulantDTO request) {
+        BeanUser postulant = userRepository.findById(request.getId())
+                .orElseThrow(() -> new CustomException("Postulant not found", HttpStatus.NOT_FOUND));
+
+        if (postulant.getRole() != ERole.POSTULANT) {
+            throw new CustomException("You can only view postulants", HttpStatus.FORBIDDEN);
+        }
+
+        return new ResponseGetPostulantsDTO(postulant);
+    }
 
 
     public Optional<BeanUser> findByEmail(String email) {
