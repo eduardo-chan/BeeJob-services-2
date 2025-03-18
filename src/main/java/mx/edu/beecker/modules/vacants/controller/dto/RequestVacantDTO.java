@@ -30,7 +30,7 @@ public class RequestVacantDTO {
     private ERelocationType relocationType;
 
     @NotBlank(message = "Job description is required")
-    @Size(max = 500, message = "Job description must not be exceed {max} characters")
+    @Size(max = 1500, message = "Job description must not be exceed {max} characters")
     private String jobDescription;
 
     @PositiveOrZero(message = "Salary must be 0 or a positive number")
@@ -42,11 +42,12 @@ public class RequestVacantDTO {
     private LocalDate deadline;
 
     @NotBlank(message = "Requirements are required")
-    @Size(max = 500, message = "Requirements name must not be exceed {max} characters")
+    @Size(max = 1500, message = "Requirements must not be exceed {max} characters")
     private String requirements;
 
     private boolean status;
 
+    @Size(max = 1500, message = "Aditional information must not be exceed {max} characters")
     private String aditionalInformation;
 
 }

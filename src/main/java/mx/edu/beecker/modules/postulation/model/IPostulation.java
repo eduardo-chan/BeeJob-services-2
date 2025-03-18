@@ -20,8 +20,13 @@ public interface IPostulation extends JpaRepository<BeanPostulation, Long> {
             Pageable pageable
     );
 
-    @Query("SELECT p FROM BeanPostulation p WHERE p.user = :user AND p.status = :status")
-    Page<BeanPostulation> findByUserAndStatus(@Param("user") BeanUser user, @Param("status") EPostulationStatus status, Pageable pageable);
+    @Query("SELECT p FROM BeanPostulation p WHERE p.user = :user " +
+            "AND (:status IS NULL OR p.status = :status)")
+    Page<BeanPostulation> findByUserAndStatus(
+            @Param("user") BeanUser user,
+            @Param("status") EPostulationStatus status,
+            Pageable pageable);
+
 
     //for get one postulation by user in session
     @Query("SELECT p FROM BeanPostulation p WHERE p.id = :postulationId AND p.user = :user")
