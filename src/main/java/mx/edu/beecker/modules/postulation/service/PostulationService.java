@@ -83,7 +83,7 @@ public class PostulationService {
         Pageable pageable = PageRequest.of(filter.getPage(), filter.getSize(), Sort.by(filter.getSortDirection(), "applicationDate"));
         Page<BeanPostulation> postulationsPage = postulationRepository.findByUserAndStatus(
                 user,
-                filter.getStatus(),
+                filter.getStatus() != null ? filter.getStatus() : null,
                 pageable
         );
 
