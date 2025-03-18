@@ -30,7 +30,7 @@ public class PostulationController {
     }
 
     @PreAuthorize("hasRole('POSTULANT')")
-    @GetMapping("/my-postulations")
+    @PostMapping("/my-postulations")
     public ResponseEntity<Page<ResponseGetPostulationDTO>> getUserPostulations(@Valid @RequestBody RequestPaginationPostulationDTO filter) {
         return ResponseEntity.ok(postulationService.getUserPostulations(filter));
     }
