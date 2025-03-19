@@ -42,7 +42,7 @@ public class PostulationController {
     }
 
     @PreAuthorize("hasRole('ADMIN')") //referencia para mostrar solo la del admin en sesión?
-    @GetMapping("/get-postulations")
+    @PostMapping("/get-postulations")
     public ResponseEntity<Page<ResponseGetPostulationDTO>> getAllPostulations(@Valid @RequestBody RequestPaginationPostulationDTO filter) {
         return ResponseEntity.ok(postulationService.getAllPostulations(filter));
     }
