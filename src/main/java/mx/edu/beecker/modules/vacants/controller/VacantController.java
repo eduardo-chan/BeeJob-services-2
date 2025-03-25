@@ -48,14 +48,12 @@ public class VacantController {
     }
 
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'POSTULANT')")
     @GetMapping("/get-one")
     public ResponseEntity<ResponseVacantDTO> getVacantById(@RequestBody @Valid RequestVacantIdDTO requestDTO) {
         ResponseVacantDTO response = vacantService.getVacantById(requestDTO);
         return ResponseEntity.ok(response);
     }
-
-    @PreAuthorize("hasRole('POSTULANT')")
+    
     @PostMapping("/get-all")
     public ResponseEntity<Page<ResponseVacantDTO>> getAllVacants(@Valid @RequestBody RequestPaginationVacantDTO filter) {
         Page<ResponseVacantDTO> response = vacantService.getAllVacants(filter);
