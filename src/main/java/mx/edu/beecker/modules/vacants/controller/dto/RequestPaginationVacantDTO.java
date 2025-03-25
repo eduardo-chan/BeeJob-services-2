@@ -5,11 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mx.edu.beecker.modules.vacants.model.EArea;
-import mx.edu.beecker.modules.vacants.model.ERelocationType;
 import org.springframework.data.domain.Sort;
-
-import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor

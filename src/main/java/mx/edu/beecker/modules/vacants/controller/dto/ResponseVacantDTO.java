@@ -1,12 +1,10 @@
 package mx.edu.beecker.modules.vacants.controller.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mx.edu.beecker.modules.vacants.model.BeanVacant;
 import mx.edu.beecker.modules.vacants.model.EArea;
-import mx.edu.beecker.modules.vacants.model.ERelocationType;
 
 import java.time.LocalDate;
 
@@ -20,7 +18,6 @@ public class ResponseVacantDTO {
     private EArea area;
     private String location;
     private boolean relocation;
-    private ERelocationType relocationType;
     private String jobDescription;
     private int salary;
 
@@ -40,7 +37,6 @@ public class ResponseVacantDTO {
         this.area = vacant.getArea();
         this.location = vacant.getLocation();
         this.relocation = vacant.isRelocation();
-        this.relocationType = vacant.getRelocationType();
         this.jobDescription = vacant.getJobDescription();
         this.salary = vacant.getSalary();
         this.publicationDate = vacant.getPublicationDate();
