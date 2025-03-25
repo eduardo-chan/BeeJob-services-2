@@ -43,6 +43,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("api/beejob/users/register-user").permitAll()
                         .requestMatchers("api/auth/*").permitAll()
+                        .requestMatchers("api/beejob/vacants/get-all").permitAll()
+                        .requestMatchers("api/beejob/vacants/get-one").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exceptions -> exceptions
