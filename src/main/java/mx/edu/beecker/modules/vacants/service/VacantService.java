@@ -41,7 +41,6 @@ public class VacantService {
         vacant.setArea(requestDTO.getArea());
         vacant.setLocation(requestDTO.getLocation());
         vacant.setRelocation(requestDTO.isRelocation());
-        vacant.setRelocationType(requestDTO.getRelocationType());
         vacant.setJobDescription(requestDTO.getJobDescription());
         vacant.setSalary(requestDTO.getSalary());
         vacant.setPublicationDate(LocalDate.now());
@@ -76,7 +75,6 @@ public class VacantService {
         vacant.setArea(requestDTO.getArea());
         vacant.setLocation(requestDTO.getLocation());
         vacant.setRelocation(requestDTO.isRelocation());
-        vacant.setRelocationType(requestDTO.getRelocationType());
         vacant.setJobDescription(requestDTO.getJobDescription());
         vacant.setSalary(requestDTO.getSalary());
         vacant.setDeadline(requestDTO.getDeadline());

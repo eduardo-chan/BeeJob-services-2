@@ -32,10 +32,6 @@ public class BeanVacant {
     @Column(name = "relocation", nullable = false)
     private boolean relocation;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "relocation_type")
-    private ERelocationType relocationType;
-
     @Column(name = "job_description", nullable = false)
     private String jobDescription;
 

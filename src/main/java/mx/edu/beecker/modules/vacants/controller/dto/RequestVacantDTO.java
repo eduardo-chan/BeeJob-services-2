@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mx.edu.beecker.modules.vacants.model.EArea;
-import mx.edu.beecker.modules.vacants.model.ERelocationType;
 
 import java.time.LocalDate;
 
@@ -26,8 +25,6 @@ public class RequestVacantDTO {
     private String location;
 
     private boolean relocation;
-
-    private ERelocationType relocationType;
 
     @NotBlank(message = "Job description is required")
     @Size(max = 1500, message = "Job description must not be exceed {max} characters")
