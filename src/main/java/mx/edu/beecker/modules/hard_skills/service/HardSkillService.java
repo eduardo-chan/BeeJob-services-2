@@ -16,7 +16,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -106,12 +108,14 @@ public class HardSkillService {
                 .orElseThrow(() -> new CustomException("User not found", HttpStatus.NOT_FOUND));
 
 
-        BeanProfessionalInformation professionalInformation = professionalInformationRepository.findByUser(user)
-                .orElseThrow(() -> new CustomException("Professional information not found", HttpStatus.NOT_FOUND));
+        Optional<BeanProfessionalInformation> professionalInformationOpt = professionalInformationRepository.findByUser(user);
 
+        if (professionalInformationOpt.isEmpty()) {
+            return Collections.emptyList();
+        }
 
-        return professionalInformation.getHardSkills().stream()
-                .map(hardSkill -> new ResponseHardSkillDTO(hardSkill))
+        return professionalInformationOpt.get().getHardSkills().stream()
+                .map(ResponseHardSkillDTO::new)
                 .collect(Collectors.toList());
     }
 

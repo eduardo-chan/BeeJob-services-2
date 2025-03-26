@@ -17,7 +17,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -108,12 +110,16 @@ public class LanguageService {
         BeanUser user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new CustomException("User not found", HttpStatus.NOT_FOUND));
 
-        BeanProfessionalInformation professionalInfo = professionalInformationRepository.findByUser(user)
-                .orElseThrow(() -> new CustomException("Professional information not found", HttpStatus.NOT_FOUND));
+        Optional<BeanProfessionalInformation> professionalInfoOpt = professionalInformationRepository.findByUser(user);
 
-        return professionalInfo.getLanguages().stream()
+        if (professionalInfoOpt.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        return professionalInfoOpt.get().getLanguages().stream()
                 .map(ResponseLanguageDTO::new)
                 .collect(Collectors.toList());
+
     }
 
     public ResponseLanguageDTO getLanguageById(RequestBaseForDeleteAndGetOneDTO requestDTO) {
