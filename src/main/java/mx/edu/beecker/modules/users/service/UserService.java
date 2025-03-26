@@ -89,7 +89,7 @@ public class UserService {
         BeanUser user = new BeanUser();
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setRole(ERole.POSTULANT);
+        user.setRole(ERole.ADMIN);
         user.setStatus(true);
 
         //save the user first
