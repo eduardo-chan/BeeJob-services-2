@@ -44,7 +44,7 @@ public class BeanVacant {
     @Column(name = "deadline", nullable = false)
     private LocalDate deadline;
 
-    @Column(name = "requirements", nullable = false)
+    @Column(name = "requirements", nullable = false, columnDefinition = "TEXT")
     private String requirements;
 
     @Column(name = "status", nullable = false)
