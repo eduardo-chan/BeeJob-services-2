@@ -32,7 +32,7 @@ public class BeanVacant {
     @Column(name = "relocation", nullable = false)
     private boolean relocation;
 
-    @Column(name = "job_description", nullable = false)
+    @Column(name = "job_description", nullable = false, columnDefinition = "TEXT")
     private String jobDescription;
 
     @Column(name = "salary")
@@ -50,7 +50,7 @@ public class BeanVacant {
     @Column(name = "status", nullable = false)
     private boolean status;
 
-    @Column(name = "aditional_information")
+    @Column(name = "aditional_information", columnDefinition = "TEXT")
     private String aditionalInformation;
 
     @OneToMany(mappedBy = "vacant")

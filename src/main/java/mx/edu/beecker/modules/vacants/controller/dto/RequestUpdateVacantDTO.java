@@ -30,7 +30,7 @@ public class RequestUpdateVacantDTO {
     private boolean relocation;
 
     @NotBlank(message = "Job description is required")
-    @Size(max = 500, message = "Job description must not be exceed {max} characters")
+    @Size(max = 1500, message = "Job description must not be exceed {max} characters")
     private String jobDescription;
 
     @PositiveOrZero(message = "Salary must be 0 or a positive number")
